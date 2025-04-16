@@ -48,7 +48,7 @@ public function retornarVuelosAerolinea($aerolinea) {
     return $vuelos;
 }
 
-public function ventaAutomatica($asientos, DateTime $fecha, $destino): Vuelo {
+public function ventaAutomatica(int $asientos, DateTime $fecha, string $destino): ?Vuelo {
     $vueloDisponible = null;
     $colAerolineas = $this->getColeccionAerolineas();
     $totalAerolineas = count($colAerolineas);
@@ -60,10 +60,6 @@ public function ventaAutomatica($asientos, DateTime $fecha, $destino): Vuelo {
             $vueloDisponible = $colAerolineas[$cont]->venderVueloADestino($asientos, $destino, $fecha);
         }
         $cont++;
-    }
-
-    if ($vueloDisponible !== null) {
-        $vueloDisponible->setAsientosDisponibles($vueloDisponible->getAsientosDisponibles() - $asientos);
     }
 
     return $vueloDisponible;
