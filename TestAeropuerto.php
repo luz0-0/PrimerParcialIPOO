@@ -35,7 +35,8 @@ echo $aeropuerto . "\n";
 
 $cantidadAsientos = 3;
 $destino = "Cipocity";
-$fecha = "2000-10-31";
+$fecha = new DateTime("2000-10-31");
+
 
 $vueloAsignado = $aeropuerto->ventaAutomatica($cantidadAsientos, $fecha, $destino);
 
